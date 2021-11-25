@@ -1,4 +1,4 @@
-= midis2jam2
+= 🎵 midis2jam2
 
 image:https://img.shields.io/github/v/release/wyskoj/midis2jam2[]
 image:https://img.shields.io/github/license/wyskoj/midis2jam2[]
@@ -6,97 +6,58 @@ image:https://img.shields.io/appveyor/build/wyskoj/midis2jam2[]
 image:https://img.shields.io/tokei/lines/github/wyskoj/midis2jam2[]
 image:https://img.shields.io/github/issues-closed/wyskoj/midis2jam2[]
 
-*midis2jam2* is a remaster of http://www.gamesbyscott.com/midijam.htm[MIDIJam], a MIDI file visualizer made by Scott Haag, last updated in 2007.
+midis2jam2 is a remaster of MIDIJam, a 3D MIDI file visualizer.
+It plays and animates any MIDI file with a 3D virtual band.
 
-== About
+https://github.com/wyskoj/midis2jam2/blob/master/implementation.adoc[Not all instruments are implemented yet]; this is a work in progress.
 
-midis2jam2 provides a faithful recreation, staying true to the original look and feel as closely as possible.
-The models and textures used in midis2jam2 are the original assets from MIDIJam, designed by MIDIJam's creator Scott Haag. midis2jam2 will complete the GM-1 implementation, allowing every MIDI instrument to be visualized.
+== 🖥️ Installation
 
-Future versions may add extended features, such as custom graphics, real time MIDI visualization, and others.
+Install midis2jam2 with the https://github.com/wyskoj/midis2jam2/releases[appropriate installer for the latest version].
 
-[#_running]
-== Running
-
-=== Easy mode
-
-Simply download https://midis2jam2.xyz[the latest version] and run the file for your system.
-Follow the on-screen instructions for installing midis2jam2.
-
-=== Hard mode
-
-If you want to experience the latest midis2jam2 updates in between releases, you can download a CI build.
-Note: these builds are unstable, so I won't provide any support for them (although, you should submit issues for pertinent bugs).
-
-==== Getting the binary
-
-You can either use a prebuilt binary or build from source.
-
-===== Using a prebuilt binary
-
-To begin, download a build from the https://www.midis2jam2.xyz/builds/[builds page].
-Move `midis2jam2-xxxxxxxx.jar` to a new folder (the Xs are a placeholder here; when you download the jar, this is the beginning of the commit hash).
-
-===== Building from source
-
-To build midis2jam2, run
+== 💾 Building
 
 [source,bash]
 ----
 $ git clone https://github.com/wyskoj/midis2jam2
-$ cd midis2jam2
-$ ./gradlew shadowjar
+$ cd midis2jam2 && ./gradlew run
 ----
 
-The jar file appears in `build/libs`.
-Copy it to a new folder.
+== ▶️ Running
 
-You will need at least _Java 15_ in order for a successful build.
+midis2jam2 also provides a command line interface.
+Run `midis2jam2 --help` for more information.
+You can also view the https://github.com/wyskoj/midis2jam2/blob/master/src/main/resources/man.txt[man page].
 
-==== Running
+== 📜 Documentation
 
-To run midis2jam2, simply execute the jar file:
+https://midis2jam2.netlify.app[Documentation] is updated on every push.
 
-[source,bash]
-----
-$ java -jar midis2jam2.jar
-----
+== ✴️ Acknowledgements
 
-You can optionally specify the relative or absolute path to a MIDI file. midis2jam2 will load and play the file using the default synthesizer Gervill:
+* http://www.gamesbyscott.com/midijam.htm[MIDIJam]
+* https://jmonkeyengine.org/[jMonkeyEngine]
 
-[source,bash]
-----
-$ java -jar midis2jam2.jar path/to/midifile.mid
-----
+== ➕ Contributing
 
-== FAQ & Troubleshooting
+Contributions are always welcome!
+See _https://github.com/wyskoj/midis2jam2/blob/master/adding-new-instruments.adoc[adding new instruments]_ for ways to get started.
 
-=== The program closed, but all the notes are sustaining.
+== ✒️ Authors
 
-Press the MIDI panic button on your synthesizer to stop the sound.
+Main developer:
 
-=== I think something is broken.
+* https://wysko.org[wyskoj]
 
-Check the issues page and make sure there isn't already a relevant issue open.
-If there isn't, create an issue and use the bug report template.
+Development contributors:
 
-=== Why doesn't instrument _X_ appear?
+* https://github.com/jlachniet[jlachniet]
+* https://github.com/nikitalita[nikitalita]
 
-It's likely I haven't implemented it yet.
-Check link:implementation.adoc[this page] for more information.
+== ⁉️ Support
 
-=== MidiUnavailableException: There is not enough memory available for this task...
+For support, join our https://discord.gg/HD6KFQ2zkW[Discord server].
 
-This can happen if you attempt to use ghost/phantom MIDI ports that appear visible on your machine.
-Try restarting your computer or reconnecting your MIDI devices.
+== ⚖️ License
 
-== Contributing
-
-Fork and make a pull request to directly make changes.
-Open an issue to request features and report bugs.
-Please ensure you use a template, and ensure you https://medium.com/nyc-planning-digital/writing-a-proper-github-issue-97427d62a20f[write good issues].
-
-== License
-
-midis2jam2 is released under the http://www.gnu.org/licenses/gpl.html[GNU General Public License 3].
-The software comes with no warranty. Assets Copyright © 2007 http://www.gamesbyscott.com/[Scott Haag] (used with permission).
+https://github.com/wyskoj/midis2jam2/blob/master/LICENSE[GNU General Public License v3.0]

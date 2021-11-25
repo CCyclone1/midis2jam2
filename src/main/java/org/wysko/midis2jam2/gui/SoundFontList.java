@@ -21,8 +21,6 @@
 
 package org.wysko.midis2jam2.gui;
 
-import org.wysko.midis2jam2.GuiLauncher;
-
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.filechooser.FileFilter;
@@ -36,9 +34,7 @@ import java.util.ResourceBundle;
 import static javax.swing.JFileChooser.APPROVE_OPTION;
 import static javax.swing.JFileChooser.FILES_ONLY;
 
-/**
- * @author Jacob Wysko
- */
+/** @author Jacob Wysko */
 public class SoundFontList extends JPanel {
 	
 	public static final FileFilter DLS_FILE_FILTER = new FileFilter() {
@@ -80,7 +76,7 @@ public class SoundFontList extends JPanel {
 	private File lastDir = new JFileChooser().getFileSystemView().getDefaultDirectory();
 	
 	private void addButtonActionPerformed(ActionEvent e) {
-		var f = new JFileChooser();
+		JFileChooser f = new JFileChooser();
 		f.setPreferredSize(new Dimension(800, 600));
 		f.setDialogTitle("Load SoundFont file");
 		f.setMultiSelectionEnabled(true);
@@ -103,12 +99,12 @@ public class SoundFontList extends JPanel {
 	
 	private void updateSf2List() {
 		final DefaultListModel<String> model = new DefaultListModel<>();
-		model.addAll(soundFonts);
+		soundFonts.forEach(model::addElement);
 		soundFontJList.setModel(model);
 	}
 	
 	private void removeButtonActionPerformed(ActionEvent e) {
-		var selectedIndices = soundFontJList.getSelectedIndices();
+		int[] selectedIndices = soundFontJList.getSelectedIndices();
 		for (int i = selectedIndices.length - 1; i >= 0; i--) {
 			if (soundFonts.get(selectedIndices[i]) != null) // Not the default synth
 				soundFonts.remove(selectedIndices[i]);
@@ -118,13 +114,13 @@ public class SoundFontList extends JPanel {
 	}
 	
 	private void upButtonActionPerformed(ActionEvent e) {
-		var selectedIndices = soundFontJList.getSelectedIndices();
-		for (var i = selectedIndices.length - 1; i >= 0; i--) {
+		int[] selectedIndices = soundFontJList.getSelectedIndices();
+		for (int i = selectedIndices.length - 1; i >= 0; i--) {
 			int selectedIndex = selectedIndices[i];
 			swapList(selectedIndex - 1, selectedIndex);
 		}
-		var freshIndices = new int[selectedIndices.length];
-		for (var i = 0; i < selectedIndices.length; i++) {
+		int[] freshIndices = new int[selectedIndices.length];
+		for (int i = 0; i < selectedIndices.length; i++) {
 			freshIndices[i] = Math.max(0, selectedIndices[i] - 1);
 		}
 		updateSf2List();
@@ -135,19 +131,19 @@ public class SoundFontList extends JPanel {
 	
 	private void swapList(int a, int b) {
 		if (a < 0 || b >= soundFonts.size()) return;
-		var file = soundFonts.get(a);
+		String file = soundFonts.get(a);
 		soundFonts.set(a, soundFonts.get(b));
 		soundFonts.set(b, file);
 	}
 	
 	private void downButtonActionPerformed(ActionEvent e) {
-		var selectedIndices = soundFontJList.getSelectedIndices();
-		for (var i = selectedIndices.length - 1; i >= 0; i--) {
+		int[] selectedIndices = soundFontJList.getSelectedIndices();
+		for (int i = selectedIndices.length - 1; i >= 0; i--) {
 			int selectedIndex = selectedIndices[i];
 			swapList(selectedIndex, selectedIndex + 1);
 		}
-		var freshIndices = new int[selectedIndices.length];
-		for (var i = 0; i < selectedIndices.length; i++) {
+		int[] freshIndices = new int[selectedIndices.length];
+		for (int i = 0; i < selectedIndices.length; i++) {
 			freshIndices[i] = Math.min(soundFonts.size() - 1, selectedIndices[i] + 1);
 		}
 		updateSf2List();
@@ -254,14 +250,23 @@ public class SoundFontList extends JPanel {
 	
 	// JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
 	private JPanel dialogPane;
+	
 	private JPanel buttonBar;
+	
 	private JButton okButton;
+	
 	private JScrollPane scrollPane1;
+	
 	private JList<String> soundFontJList;
+	
 	private JPanel panel1;
+	
 	private JResizedIconButton addButton;
+	
 	private JResizedIconButton removeButton;
+	
 	private JResizedIconButton upButton;
+	
 	private JResizedIconButton downButton;
 	// JFormDesigner - End of variables declaration  //GEN-END:variables
 }

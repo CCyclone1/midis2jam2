@@ -21,19 +21,18 @@
 
 package org.wysko.midis2jam2.gui;
 
-import org.wysko.midis2jam2.Liaison;
+import org.wysko.midis2jam2.Midis2jam2;
+import org.wysko.midis2jam2.starter.Liaison;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
-/**
- * @author Jacob Wysko
- */
-public class Midis2jam2Display extends JFrame {
+/** @author Jacob Wysko */
+public class Midis2jam2Display extends Displays {
 	
-	public Midis2jam2Display(Liaison liaison, Canvas canvas) {
+	public Midis2jam2Display(Liaison liaison, Canvas canvas, Midis2jam2 context) {
 		initComponents();
 		
 		addWindowListener(new WindowAdapter() {
@@ -53,7 +52,7 @@ public class Midis2jam2Display extends JFrame {
 		//======== this ========
 		setIconImage(new ImageIcon(getClass().getResource("/ico/icon16.png")).getImage());
 		setTitle("midis2jam2");
-		var contentPane = getContentPane();
+		Container contentPane = getContentPane();
 		contentPane.setLayout(new GridBagLayout());
 		((GridBagLayout) contentPane.getLayout()).columnWidths = new int[]{0, 0};
 		((GridBagLayout) contentPane.getLayout()).rowHeights = new int[]{0, 0};
@@ -70,13 +69,6 @@ public class Midis2jam2Display extends JFrame {
 		pack();
 		setLocationRelativeTo(getOwner());
 		// JFormDesigner - End of component initialization  //GEN-END:initComponents
-	}
-	
-	public void display() {
-		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-		pack();
-		setLocationRelativeTo(null);
-		setVisible(true);
 	}
 	
 	// JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
